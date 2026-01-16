@@ -21,16 +21,18 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-        pip install py2app pyinstaller
+        pip install pyinstaller
 
     - name: Build with PyInstaller
       run: |
-        # --windowed means no black console window pops up
-        # --onefile means everything is packed into one executable
-        pyinstaller --noconsole --onefile --name "FliesenQR" app.py
+        # --windowed creates a .app file instead of a command line tool
+        # --noconsole hides the black terminal window
+        # --name sets the App name to "FliesenQR"
+        pyinstaller --noconsole --windowed --name "FliesenQR" QR-Geb.py
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: FliesenQR-Mac-App
+        name: FliesenQR-App
+        # PyInstaller puts the .app folder inside the 'dist' folder
         path: dist/FliesenQR.app
