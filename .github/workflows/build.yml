@@ -28,7 +28,7 @@ jobs:
         # --windowed creates a .app file instead of a command line tool
         # --noconsole hides the black terminal window
         # --name sets the App name to "FliesenQR"
-        pyinstaller --noconsole --windowed --name "FliesenQR" QR-Geb.py
+        pyinstaller --noconsole --windowed --name "FliesenQR" QR-Gen.py
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
